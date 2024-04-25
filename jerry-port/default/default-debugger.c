@@ -39,11 +39,7 @@ void jerry_port_sleep (uint32_t sleep_time) /**< milliseconds to sleep */
 #ifdef _WIN32
   Sleep (sleep_time);
 #elif defined (HAVE_TIME_H)
-  struct timespec sleep_timespec;
-  sleep_timespec.tv_sec = (time_t) sleep_time / 1000;
-  sleep_timespec.tv_nsec = ((long int) sleep_time % 1000) * 1000000L;
-
-  nanosleep (&sleep_timespec, NULL);
+  sleep_ms(sleep_time);
 #elif defined (HAVE_UNISTD_H)
   usleep ((useconds_t) sleep_time * 1000);
 #else
