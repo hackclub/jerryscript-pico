@@ -27,7 +27,6 @@
 #include <unistd.h>
 #endif /* _WIN32 */
 
-#include "pico/sleep.h"
 
 #include "jerryscript-port.h"
 #include "jerryscript-port-default.h"
@@ -41,7 +40,7 @@ void jerry_port_sleep (uint32_t sleep_time) /**< milliseconds to sleep */
 #ifdef _WIN32
   Sleep (sleep_time);
 #elif defined (HAVE_TIME_H)
-  sleep_ms(sleep_time);
+  (void) sleep_time;
 #elif defined (HAVE_UNISTD_H)
   usleep ((useconds_t) sleep_time * 1000);
 #else
