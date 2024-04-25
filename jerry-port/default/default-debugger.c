@@ -27,6 +27,8 @@
 #include <unistd.h>
 #endif /* _WIN32 */
 
+#include "pico/sleep.h"
+
 #include "jerryscript-port.h"
 #include "jerryscript-port-default.h"
 
